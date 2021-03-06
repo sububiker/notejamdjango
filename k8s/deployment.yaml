@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: notejam
+  name: notejam
+  namespace: apps
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notejam
+  template:
+    metadata:
+      labels:
+        app: notejam
+    spec:
+      containers:
+      - image: sububiker/notejam:latest
+        name: notejam
+        ports:
+        - containerPort: 80
+          name: notejam
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: notejam
+  name: notejam
+  namespace: apps
+spec:
+  type: NodePort
+  ports:
+  - name: "jam-service"
+    port: 80
+    targetPort: 80
+    nodePort: 31000
+  selector:
+    app: notejam
