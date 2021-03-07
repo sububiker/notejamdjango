@@ -16,7 +16,7 @@ spec:
         app: notejam
     spec:
       containers:
-      - image: sububiker/notejam:21
+      - image: sububiker/notejam:23
         name: notejam
         ports:
         - containerPort: 80
