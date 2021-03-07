@@ -16,13 +16,12 @@ spec:
         app: notejam
     spec:
       containers:
-      - image: sububiker/django:23
+      - image: sububiker/django:latest
         name: notejam
         ports:
         - containerPort: 80
           name: notejam
-      imagePullSecrets:
-      - name: regcred
+
 ---
 apiVersion: v1
 kind: Service
